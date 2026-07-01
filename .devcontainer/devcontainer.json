@@ -1,9 +1,6 @@
 {
   "name": "OS Concepts",
-  "build": {
-    "context": "..",
-    "dockerfile": "../Dockerfile"
-  },
+  "image": "os_concept:latest",
   "workspaceFolder": "/os_concept",
   "customizations": {
     "vscode": {

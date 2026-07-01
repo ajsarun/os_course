@@ -66,13 +66,14 @@ java First
 
 ## Working with VS Code Dev Containers
 
-The repository includes a Dev Container configuration so you can develop directly inside the Docker environment from VS Code, with full IntelliSense, a built-in terminal, and debugger support.
+The repository includes a Dev Container configuration so you can develop directly inside the `os_concept` Docker image from VS Code, with full IntelliSense, a built-in terminal, and debugger support.
 
 ### Prerequisites
 
 - [VS Code](https://code.visualstudio.com/)
 - [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (`ms-vscode-remote.remote-containers`)
 - [Docker](https://www.docker.com/products/docker-desktop) running
+- `os_concept` image already built (see [Build the Docker Image](#build-the-docker-image) above)
 
 ### Steps
 
@@ -82,17 +83,22 @@ The repository includes a Dev Container configuration so you can develop directl
    code os_course
    ```
 
-2. When prompted, click **Reopen in Container** — or open the Command Palette (`F1`) and run:
+2. Build the `os_concept` image if you haven't already:
+   ```bash
+   docker build -t os_concept .
+   ```
+
+3. When prompted, click **Reopen in Container** — or open the Command Palette (`F1`) and run:
    ```
    Dev Containers: Reopen in Container
    ```
 
-3. VS Code will build the image and install the following extensions automatically:
+4. VS Code will start a container from the `os_concept` image and install the following extensions automatically:
    - C/C++ IntelliSense & debugger
    - Java language support & debugger
    - Makefile tools
 
-4. The workspace opens at `/os_concept` with all source codes ready to edit, compile, and run from the integrated terminal.
+5. The workspace opens at `/os_concept` with all source codes ready to edit, compile, and run from the integrated terminal.
 
 ---
 
