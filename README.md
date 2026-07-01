@@ -26,11 +26,35 @@ This repository contains example source codes to complement the course **Operati
 
 - [Docker](https://www.docker.com/products/docker-desktop) installed and running
 
-### Build the Docker Image
+---
+
+## Using the Docker Image
+
+### Option 1 — Pull from Docker Hub (Recommended)
+
+Pull the pre-built image directly from Docker Hub:
 
 ```bash
+docker pull ajsarun/os_concept
+```
+
+Then tag it locally so the Dev Container config can find it:
+
+```bash
+docker tag ajsarun/os_concept os_concept
+```
+
+### Option 2 — Build Locally
+
+Clone the repository and build the image yourself:
+
+```bash
+git clone https://github.com/ajsarun/os_course.git
+cd os_course
 docker build -t os_concept .
 ```
+
+---
 
 ### Run a Container
 
@@ -73,7 +97,7 @@ The repository includes a Dev Container configuration so you can develop directl
 - [VS Code](https://code.visualstudio.com/)
 - [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) (`ms-vscode-remote.remote-containers`)
 - [Docker](https://www.docker.com/products/docker-desktop) running
-- `os_concept` image already built (see [Build the Docker Image](#build-the-docker-image) above)
+- `os_concept` image available locally (pull or build using the steps above)
 
 ### Steps
 
@@ -83,9 +107,10 @@ The repository includes a Dev Container configuration so you can develop directl
    code os_course
    ```
 
-2. Build the `os_concept` image if you haven't already:
+2. Make sure the `os_concept` image is available locally — pull it from Docker Hub:
    ```bash
-   docker build -t os_concept .
+   docker pull ajsarun/os_concept
+   docker tag ajsarun/os_concept os_concept
    ```
 
 3. When prompted, click **Reopen in Container** — or open the Command Palette (`F1`) and run:
