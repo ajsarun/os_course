@@ -1,0 +1,25 @@
+{
+  "name": "OS Concepts",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "workspaceFolder": "/os_concept",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "vscjava.vscode-java-pack",
+        "ms-vscode.makefile-tools"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "files.eol": "\n"
+      }
+    }
+  },
+  "remoteUser": "root"
+}
