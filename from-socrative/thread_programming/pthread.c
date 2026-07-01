@@ -40,6 +40,5 @@ void *runner (void *param) {
 			sum += i;
 		}
 	}
-	pthread_exit(NULL);
+	pthread_exit(0);
 }
-

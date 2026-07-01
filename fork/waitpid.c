@@ -12,15 +12,17 @@ int main(){
   for (i = 0; i < 3; ++i) {		/* generate 3 child processes     */
     if ((pid[i] = fork()) == 0) {	/* store each PID in the array    */
       execl("child", "child", NULL);
-    } else
+    } 
+    else {
       printf("Forked child %d\n", pid[i]);
+    }
   }
 
 /*	Wait for the children ... in order of generation			
 */
   for( i=0; (w = waitpid( pid[i], &status, 0)) && w != -1; ++i ) {
         printf("Wait on PID: %d returns value of  : %d\n", w,
-                WEXITSTATUS(status));
+               WEXITSTATUS(status));
   }
   exit(0);
 }

@@ -10,16 +10,20 @@ int main(){
   for (i = 0; i < 3; ++i) {		   /* generate 3 child processes	    */
     if ((pid = fork( )) == 0) {
       execl("child", "child", NULL);
-    } else                             /* assuming no failures here ...  */
+    } 
+    else {                             /* assuming no failures here ...  */
       printf("Forked child %d\n", pid);
+    }
   }
 /*	Wait for the children				
 */
   while ((w = wait(&status)) && w != -1) {
- 	printf("Wait on PID: %d returns status of : %d\n", w, 
-			WEXITSTATUS(status));
-    /*printf("Wait on PID: %d returns status of : %d\n", w, 
-			status);*/
+    if(WIFEXITED(status)) {
+      printf("Wait on PID: %d returns status of : %d\n", w, 
+		    WEXITSTATUS(status));
+    }
+     	/*printf("Wait on PID: %d returns status of : %d\n", w, 
+			  status);*/
   }
   exit(0);
 }

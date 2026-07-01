@@ -1,0 +1,2 @@
+mkdir test
+cd test

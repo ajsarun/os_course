@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum; /* this data is shared by the thread(s) */
+//int sum; /* this data is shared by the thread(s) */
 void *runner(void *param);
 int main(int argc, char *argv[]) {
-	pthread_t tid;
+	int *sum;
+    pthread_t tid;
 	pthread_attr_t attr;
 	if (argc != 2) {
 		fprintf(stderr, "usage: pthread <integer value>\n");
@@ -25,21 +26,21 @@ int main(int argc, char *argv[]) {
 	pthread_create(&tid, &attr, runner, argv[1]);
 	/* now wait for the thread to exit */
 	printf("I am mother thread, I will wait for my child thread\n");
-	pthread_join(tid, NULL);
-	printf("from my child sum = %d\n", sum);
+	
+	pthread_join(tid, (void **) &sum);
+	printf("from my child sum = %d\n", *sum);
 }
 
 /* the thread will begin control in this function */
 void *runner (void *param) {
 	int i;
 	int upper = atoi(param);
-	sum = 0;
+	int *sum = (int *) malloc(sizeof(int));
 	printf("I am child thread, I am calculating\n");
 	if (upper > 0) {
 		for (i = 0; i <= upper; ++i) {
-			sum += i;
+			*sum += i;
 		}
 	}
-	pthread_exit(NULL);
+	pthread_exit((void *) sum);
 }
-
